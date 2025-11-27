@@ -1,0 +1,44 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "yuki-tweet-app",
+  "compatibility_date": "2025-11-26",
+  "pages_build_output_dir": "./dist",
+  "compatibility_flags": [
+    "nodejs_compat"
+  ],
+  // "vars": {
+  //   "MY_VAR": "my-variable"
+  // },
+  // "kv_namespaces": [
+  //   {
+  //     "binding": "MY_KV_NAMESPACE",
+  //     "id": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+  //   }
+  // ],
+  // "r2_buckets": [
+  //   {
+  //     "binding": "MY_BUCKET",
+  //     "bucket_name": "my-bucket"
+  //   }
+  // ],
+  // "d1_databases": [
+  //   {
+  //     "binding": "MY_DB",
+  //     "database_name": "my-database",
+  //     "database_id": ""
+  //   }
+  // ],
+  // "ai": {
+  //   "binding": "AI"
+  // }
+
+   "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "yuki-db",
+      "database_id": "0a822bc0-f979-4771-8f6b-2c3d97ab49cf"
+    }
+  ]
+
+  
+}
