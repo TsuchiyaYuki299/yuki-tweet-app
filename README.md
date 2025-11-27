@@ -1,3 +1,10 @@
+# ひとりでつぶやくTwitterもどき
+
+このURLから見れます
+https://yuki-tweet-app.pages.dev/
+
+- だれとも繋がらない、自分だけのつぶやきを。
+
 ```txt
 npm install
 npm run dev
