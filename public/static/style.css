@@ -1,37 +1,188 @@
-body {
-  font-family: sans-serif;
-  max-width: 600px;
-  margin: 0 auto;
-  padding: 20px;
+/* Google Fonts: モダンなゴシック体 */
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&display=swap');
+
+/* --- ベーススタイル --- */
+:root {
+  --bg-color: #f0f2f5;       /* 全体の背景色 */
+  --card-bg: #ffffff;        /* カードの背景色 */
+  --primary-gradient: linear-gradient(135deg, #4a90e2, #007bff); /* ボタン用 */
+  --text-main: #333333;
+  --text-sub: #888888;
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.08);
+  --radius-lg: 24px;
+  --radius-md: 16px;
 }
-textarea {
+
+body {
+  font-family: 'Noto Sans JP', sans-serif;
+  background-color: var(--bg-color);
+  color: var(--text-main);
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  min-height: 100vh;
+}
+
+/* --- レイアウトコンテナ --- */
+.container {
   width: 100%;
-  height: 80px;
+  max-width: 480px;
+  padding: 40px 20px;
   box-sizing: border-box;
 }
-button {
-  padding: 10px 20px;
-  cursor: pointer;
+
+/* --- ヘッダー --- */
+header {
+  text-align: center;
+  margin-bottom: 30px;
 }
-.tweet {
-  border-bottom: 1px solid #ccc;
-  padding: 10px 0;
+
+h1 {
+  font-size: 28px;
+  font-weight: 700;
+  margin: 0;
+  color: #222;
 }
-.meta {
+
+/* --- 入力エリア --- */
+.input-card {
+  background: var(--card-bg);
+  border-radius: var(--radius-lg);
+  padding: 20px;
+  box-shadow: var(--shadow-md);
+  margin-bottom: 30px;
   display: flex;
-  justify-content: space-between;
-  align-items: center;
-  font-size: 0.8em;
-  color: #666;
+  flex-direction: column;
+  gap: 15px;
 }
-.delete-btn {
-  background-color: #ff4d4d;
+
+/* フォーム自体のスタイルリセット */
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+textarea {
+  width: 100%;
+  border: none;
+  resize: none;
+  font-size: 16px;
+  font-family: inherit;
+  outline: none;
+  background: #f8f9fa;
+  padding: 15px;
+  border-radius: var(--radius-md);
+  box-sizing: border-box;
+  height: 100px;
+}
+
+textarea::placeholder {
+  color: #bbb;
+}
+
+/* 送信ボタン */
+.submit-btn {
+  background: var(--primary-gradient);
   color: white;
   border: none;
-  padding: 5px 10px;
-  border-radius: 4px;
-  font-size: 0.8em;
+  padding: 14px;
+  border-radius: 50px;
+  font-size: 16px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+  box-shadow: 0 4px 10px rgba(74, 144, 226, 0.3);
+  width: 100%; /* ボタンを幅いっぱいに */
 }
+
+.submit-btn:active {
+  transform: scale(0.98);
+}
+
+/* --- タイムライン --- */
+.timeline {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* --- 投稿カード --- */
+.tweet-card {
+  background: var(--card-bg);
+  border-radius: var(--radius-lg);
+  padding: 20px;
+  box-shadow: var(--shadow-sm);
+  position: relative;
+  transition: transform 0.2s;
+  animation: fadeIn 0.3s ease-out; /* ふわっと表示 */
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.tweet-card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+.tweet-date {
+  font-size: 12px;
+  color: var(--text-sub);
+  margin-bottom: 8px;
+  display: block;
+}
+
+.tweet-content {
+  display: flex;
+  align-items: flex-start;
+  gap: 15px;
+}
+
+.user-avatar {
+  width: 40px;
+  height: 40px;
+  background-color: #e0e0e0;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  flex-shrink: 0;
+}
+
+.user-avatar i {
+  font-size: 20px;
+  color: #999;
+}
+
+.tweet-text {
+  font-size: 15px;
+  line-height: 1.6;
+  margin: 0;
+  padding-top: 5px;
+  word-break: break-all;
+  white-space: pre-wrap; /* 改行を反映 */
+}
+
+/* 削除ボタン */
+.delete-btn {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  background: none;
+  border: none;
+  color: #ddd; /* 薄くして目立たなく */
+  cursor: pointer;
+  padding: 5px;
+  transition: color 0.2s;
+  font-size: 1.1em;
+}
+
 .delete-btn:hover {
-  background-color: #ff0000;
+  color: #ff6b6b;
 }
